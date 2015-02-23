@@ -38,7 +38,7 @@ int main(void)
 	}
 
 	char* title = "GAM150Debug";
-	SetConsoleTitle(title);
+	SetConsoleTitleA(title);
 
 	printArray(dataArray, length);
 
