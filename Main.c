@@ -22,21 +22,29 @@
 
 #include <stdio.h>
 #include <Windows.h>
-static void printArray(int * dataArray);
-static void sortArray(int * dataArray);
+static void printArray(int * dataArray, int arrayLength);
+static void sortArray(int * dataArray, int arrayLength);
 
 int main(void)
 {
-	int dataArray[10] = { 1000, 1, 10, 100, 500, 30, 22, 8, 50, 0 };
-	int length = sizeof(dataArray) / sizeof(int);
+	int rawData[11] = { 1000, 1, 10, 100, 500, 30, 22, 8, 50 };
+	int length = sizeof(rawData) / sizeof(int);
+	int * dataArray = (int*)malloc(length * sizeof(int));
+	int i;
+
+	for (i = 0; i < length; i++)
+	{
+		dataArray[i] = rawData[i];
+	}
+
 	char* title = "GAM150Debug";
 	SetConsoleTitle(title);
 
-	printArray(dataArray);
+	printArray(dataArray, length);
 
 	sortArray(dataArray, length);
 
-	printArray(dataArray);
+	printArray(dataArray, length);
 
 	printf("Press 'enter' to quit.");
 	getchar();
@@ -51,11 +59,11 @@ Pointer to the data array to be sorted.
 */
 /******************************************************************************/
 
-static void printArray(int * dataArray)
+static void printArray(int * dataArray, int arrayLength)
 {
 	int i;
 
-	for(i = 0; i < 10; ++i)
+	for(i = 0; i < arrayLength; ++i)
 	{
 		printf("%6d ", dataArray[i]);
 	}
