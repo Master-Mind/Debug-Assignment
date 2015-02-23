@@ -1,17 +1,17 @@
 /******************************************************************************/
 /*!
  \file   main.c
- \author Doug Schilling
- \par    Course: GAM150
+ \author Doug Schilling, Alex DeJardin, and Kyle Cummins
+ \par    Course: GAM15x
  \par    All content © 2015 DigiPen (USA) Corporation, all rights reserved.
  \brief
 	Purpose: Sort and print an array of 10 predetermined values.
 
 	Objectives:
-		[ ] Identify and fix any defects in the program.
-		[ ] Eliminate the magic number ("10") specifying the array length.
+		[X] Identify and fix any defects in the program.
+		[X] Eliminate the magic number ("10") specifying the array length.
 		[X] Modify the functions to support arrays of any length.
-		[ ] Retain the original purpose of the program.
+		[X] Retain the original purpose of the program.
 
 	Note:
 		Consider this code to be part of a much larger project.  As a result,
@@ -27,24 +27,17 @@ static void sortArray(int * dataArray, int arrayLength);
 
 int main(void)
 {
-	int rawData[11] = { 1000, 1, 10, 100, 500, 30, 22, 8, 50 };
-	int length = sizeof(rawData) / sizeof(int);
-	int * dataArray = (int*)malloc(length * sizeof(int));
-	int i;
-
-	for (i = 0; i < length; i++)
-	{
-		dataArray[i] = rawData[i];
-	}
+	int dataArray[] = { 1000, 1, 10, 100, 500, 30, 22, 8, 50, 0 };
+	int arrayLength = sizeof(dataArray) / sizeof(int);
 
 	char* title = "GAM150Debug";
 	SetConsoleTitleA(title);
 
-	printArray(dataArray, length);
+	printArray(dataArray, arrayLength);
 
-	sortArray(dataArray, length);
+	sortArray(dataArray, arrayLength);
 
-	printArray(dataArray, length);
+	printArray(dataArray, arrayLength);
 
 	printf("Press 'enter' to quit.");
 	getchar();
@@ -56,6 +49,8 @@ int main(void)
 Prints an array of ints to the output window.
 \param dataArray
 Pointer to the data array to be sorted.
+\param arrayLength
+The length of the array
 */
 /******************************************************************************/
 
@@ -76,6 +71,8 @@ static void printArray(int * dataArray, int arrayLength)
 Sorts an array of ints using bubble sort.
 \param dataArray
 Pointer to the data array to be sorted.
+\param arrayLength
+The length of the array
 \note
 "the bubble sort seems to have nothing to recommend it, except a catchy name
 and the fact that it leads to some interesting theoretical problems"
