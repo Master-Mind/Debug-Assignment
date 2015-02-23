@@ -81,7 +81,7 @@ static void sortArray(int * dataArray)
 
 	for(i = 0; i < 10; ++i)
 	{
-		for(j = 0; j < 10 - i; ++j)
+		for(j = 0; j < 9 - i; ++j)
 		{
 			if (dataArray[j] > dataArray[j+1])
 			{
