@@ -8,10 +8,10 @@
 	Purpose: Sort and print an array of 10 predetermined values.
 
 	Objectives:
-		Identify and fix any defects in the program.
-		Eliminate the magic number ("10") specifying the array length.
-		Modify the functions to support arrays of any length.
-		Retain the original purpose of the program.
+		[ ] Identify and fix any defects in the program.
+		[ ] Eliminate the magic number ("10") specifying the array length.
+		[X] Modify the functions to support arrays of any length.
+		[ ] Retain the original purpose of the program.
 
 	Note:
 		Consider this code to be part of a much larger project.  As a result,
@@ -22,19 +22,19 @@
 
 #include <stdio.h>
 #include <Windows.h>
-
 static void printArray(int * dataArray);
 static void sortArray(int * dataArray);
 
 int main(void)
 {
 	int dataArray[10] = { 1000, 1, 10, 100, 500, 30, 22, 8, 50, 0 };
-
-	SetConsoleTitle("GAM150Debug");
+	int length = sizeof(dataArray) / sizeof(int);
+	char* title = "GAM150Debug";
+	SetConsoleTitle(title);
 
 	printArray(dataArray);
 
-	sortArray(dataArray);
+	sortArray(dataArray, length);
 
 	printArray(dataArray);
 
@@ -75,13 +75,13 @@ Donald Knuth, The Art of Computer Programming
 */
 /******************************************************************************/
 
-static void sortArray(int * dataArray)
+static void sortArray(int * dataArray, int arrayLength)
 {
 	int i, j;
 
-	for(i = 0; i < 10; ++i)
+	for(i = 0; i < arrayLength; ++i)
 	{
-		for(j = 0; j < 9 - i; ++j)
+		for(j = 0; j < (arrayLength - 1) - i; ++j)
 		{
 			if (dataArray[j] > dataArray[j+1])
 			{
